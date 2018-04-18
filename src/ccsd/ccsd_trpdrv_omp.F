@@ -140,6 +140,7 @@
 !
       if (occsdps) then
          call pstat_on(ps_trpdrv)
+         call pcontrol(1,"trpdrv-p"//char(0))
       else
          call qenter('trpdrv',0)
       endif
@@ -219,7 +220,9 @@
                         emp4k = 0.0d0
                         emp5k = 0.0d0
                         if (occsdps) then
+                           call pcontrol(-1,"trpdrv-p"//char(0))
                            call pstat_on(ps_doxxx)
+                           call pcontrol(1,"doxxx"//char(0))
                         else
                            call qenter('doxxx',0)
                         endif
@@ -323,7 +326,9 @@
 !$omp master
                         if (occsdps) then
                            call pstat_off(ps_doxxx)
+                           call pcontrol(-1,"doxxx"//char(0))
                            call pstat_on(ps_tengy)
+                           call pcontrol(1,"tengy"//char(0))
                         else
                            call qexit('doxxx',0)
                            call qenter('tengy',0)
@@ -387,6 +392,8 @@
 !$omp end parallel
                          if (occsdps) then
                             call pstat_off(ps_tengy)
+                            call pcontrol(-1,"tengy"//char(0))
+                            call pcontrol(1,"trpdrv-e"//char(0))
                          else
                             call qexit('tengy',0)
                          endif
@@ -423,6 +430,7 @@
       call ga_sync()
       if (occsdps) then
          call pstat_off(ps_trpdrv)
+         call pcontrol(-1,"trpdrv-e"//char(0))
       else
          call qexit('trpdrv',0)
       endif
