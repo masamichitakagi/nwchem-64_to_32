@@ -870,7 +870,7 @@ c
          nvpass = nvpass + 1
          oseg_lo = oseg_hi + 1
          oseg_hi = min(oseg_hi+vchunk,vir_hi)
-         call pcontrol(1,"integral"//char(0))
+c         call pcontrol(1,"integral"//char(0))
          tx(1)=tcgtime()
          if (iam.eq.0)write(*,846)nvpass,tx(1)
  846     format(' commencing integral evaluation ',i8,' at ',f14.2)
@@ -880,8 +880,8 @@ c
      &      blen, cmo, ncor, nocc, nvir, ndel, Tol2E)
 c        print *,'call trpdrv ',nvpass
          call ga_sync()
-         call pcontrol(-1,"integral"//char(0))
-         call pcontrol(1,"triples"//char(0))
+c         call pcontrol(-1,"integral"//char(0))
+c         call pcontrol(1,"triples"//char(0))
          tx(2)=tcgtime()
 c
          if (use_trpdrv_omp) then
@@ -1027,7 +1027,7 @@ c
 c
          endif
 c
-         call pcontrol(-1,"triples"//char(0))
+c         call pcontrol(-1,"triples"//char(0))
          tx(3)=tcgtime()
 
          if (iam.eq.0.and.oprint)then

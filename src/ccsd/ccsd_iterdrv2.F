@@ -258,7 +258,7 @@ c
       endif
 c
       call ga_brdcst(msg_cc_t1a,t1,mdtob(lnov),0)
-      call pcontrol(1,"nt2p"//char(0))
+c      call pcontrol(1,"nt2p"//char(0))
        tx(3)=tcgtime()
 c
 c ----------------------------------------------------------
@@ -277,8 +277,8 @@ c ----------------------------------------------------------
          call ga_put(g_ht2,offt2+1,offt2+lnov,nvp1,nvp1,scra,lnov)
       endif
       call ga_sync()
-      call pcontrol(-1,"nt2p"//char(0))
-      call pcontrol(1,"t2"//char(0))
+c      call pcontrol(-1,"nt2p"//char(0))
+c      call pcontrol(1,"t2"//char(0))
       tx(1)=tcgtime()
       call ccsd_pampt2(basis,idiis,nsh,ncor,nocc,nvir,nact,nbf,
      &                iprt,cmo,eorb,t1,ht1,
@@ -299,8 +299,8 @@ c ----------------------------------------------------------
       endif
 
 
-      call pcontrol(-1,"t2"//char(0))
-      call pcontrol(1,"nt2e"//char(0))
+c      call pcontrol(-1,"t2"//char(0))
+c      call pcontrol(1,"nt2e"//char(0))
       tx(2)=tcgtime()
       tstart=tx(2)
       call ccsd_pdiis(nocc,nvir,idiis,ndiis,t1,ht1,scra,scrb,mxvec,
@@ -308,7 +308,7 @@ c ----------------------------------------------------------
       call ga_sync()
       deccsd=eccsd-eold
       eold=eccsd
-      call pcontrol(-1,"nt2e"//char(0))
+c      call pcontrol(-1,"nt2e"//char(0))
       tx(4)=tcgtime()
       tend=tx(4)
       if (iprt.gt.5.and.iam.eq.0)print *,' time pdiis ',tend-tstart

@@ -379,7 +379,7 @@ c - note integrals computed 4 times minimal list
 c ------------------------------------------------------------
 c
       call ga_sync()
-      call pcontrol(1,"mb"//char(0))
+c      call pcontrol(1,"mb"//char(0))
       tx(1)=tcgtime()
       if (iam.eq.0.and.iprt.gt.5)
      &    print *,' begin parallel integral generation'
@@ -709,7 +709,7 @@ c sync before 3 and 4 index transformation
       endif
 c
       call ga_sync()
-      call pcontrol(-1,"mb"//char(0))
+c      call pcontrol(-1,"mb"//char(0))
       tx(2)=tcgtime()
       if (iam.eq.0) then
 *rak     write(6,*)'Time around main block',tx(2)-tx(1)
