@@ -1,6 +1,10 @@
 #
 # This makefile has to be processed by GNU make
 #
+
+# Serialize (git clone) and (cd build; ../ga-5.6.3/configure)
+.NOTPARALLEL:
+
 include ../config/makefile.h
 
 SHELL = /bin/sh

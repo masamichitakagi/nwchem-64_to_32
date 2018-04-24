@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # $Id: get-tools 28436 2016-08-03 19:50:05Z edo $
 #
@@ -41,6 +41,13 @@ then
     GA_RELEASE_NO=5.6.3
 fi
     GA_DIR=ga-"$GA_RELEASE_NO"
+
+# Use patched version
+rm -rf $GA_DIR
+git clone https://github.com/masamichitakagi/ga.git $GA_DIR
+if false
+then
+
 if [ ! -f ga-"$GA_RELEASE_NO".tar.gz ]; then
 TAR_URL=https://github.com/GlobalArrays/ga/releases/download/v"$GA_RELEASE_NO"/ga-"$GA_RELEASE_NO".tar.gz
 # TAR_URL=https://github.com/edoapra/ga/releases/download/v"$GA_RELEASE_NO"/ga-"$GA_RELEASE_NO".tar.gz
@@ -70,6 +77,7 @@ if [ ! -f "$GA_DIR"/configure ]; then
  tar xvzf ga-"$GA_RELEASE_NO".tar.gz
 fi
 fi
+fi #false
 else #USE_GA_RELEASE
 if test "x$DEV_GA" != x
 then
