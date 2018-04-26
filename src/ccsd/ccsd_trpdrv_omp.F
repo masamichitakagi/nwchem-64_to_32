@@ -138,12 +138,12 @@
 !
 !      call ga_sync() ! ga_sync called just before trpdrv in aoccsd2
 !
-      call armci_init_async_thread()
       if (occsdps) then
          call pstat_on(ps_trpdrv)
       else
          call qenter('trpdrv',0)
       endif
+      call armci_init_async_thread()
       inode=-1
       next=nxtask(nodes, 1)
       do klo = 1, nocc, kchunk

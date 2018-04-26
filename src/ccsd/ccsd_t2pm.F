@@ -334,6 +334,7 @@ c
       else
          call qenter('sxy',0)
       endif
+c      call armci_init_async_thread()
 c
       lnoo=nocc*nocc
       iam=ga_nodeid()
@@ -696,6 +697,7 @@ c
       repeat=.true.
       endif!!!if (.not.repeat.or..not.use_disk.or.icount(2).gt.0)
 cedo
+c     call armci_finalize_async_thread()
       call ga_sync()
 c sync before 3 and 4 index transformation
       if (use_ccsd_omp) then
